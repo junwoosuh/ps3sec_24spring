@@ -4,7 +4,17 @@
 # The script makes use of the datasets waves-1-and-2.csv, wave-2, and mosul-outcome-wave-2.csv
 
 # Change the working directory as necessary
-setwd("~/Dropbox/iraq-experiment/science/replication/data")
+setwd("C:/Users/james/Documents/GitHub/ps3sec_24spring/weekly_materials/Data/mousa")
+table(df$own_group_preference,df$treated)
+table(df$own_group_preference)
+library(estimatr)
+difference_in_means(own_group_preference ~ treated, df)
+
+contact <- df
+df$train_t1
+
+contact %>% ggplot() + 
+  geom_point(aes(x=treated,y=train_t1),position="jitter")
 
 library(tidyverse)
 library(lfe)
@@ -27,7 +37,9 @@ merged_pilot <- read.csv("waves-1-and-2.csv", stringsAsFactors=FALSE)
 
 df <- read.csv("wave-2.csv", stringsAsFactors=FALSE) %>% 
   mutate(block = as.character(block))
-
+mousa <- saveRDS(df, "contact.RData")
+df$treated
+df$
 # Data on patronizing restaurant in Mosul
 
 mosul_df <- read.csv("mosul-outcome-wave-2.csv", stringsAsFactors=FALSE) %>% 
